@@ -12,12 +12,13 @@ load_dotenv()
 CLIENT_ID = os.getenv('CLIENT_ID')
 TENANT_ID = os.getenv('TENANT_ID')
 APPROVER_EMAIL = os.getenv('APPROVER_EMAIL')
+API_USERNAME = os.getenv('API_USERNAME')
+API_PASSWORD = os.getenv('API_PASSWORD')
 
 API_BASE_URL = "https://wo-flow-prod-10-2023-os3mt.ondigitalocean.app"
 LOGIN_URL = f"{API_BASE_URL}/api/mobile/v3.0/login"
 TICKETS_API_URL = f"{API_BASE_URL}/api/mobile/v3.0/uniform-requests/all"
-API_USERNAME = "bikram.prod"
-API_PASSWORD = "h$FSE2a8giAs@BMe55QtBsC@x"
+
 
 AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
 SCOPE = ["https://graph.microsoft.com/ApprovalSolution.ReadWrite", "https://graph.microsoft.com/User.Read"]
