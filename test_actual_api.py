@@ -4,10 +4,14 @@ import webbrowser
 from datetime import datetime, timedelta, timezone
 from dateutil.parser import parse
 import time
+import os
+from dotenv import load_dotenv
 
-CLIENT_ID = "e3da78d9-309d-4ae1-9746-948aa196667f"
-TENANT_ID = "46d6a910-c309-42a3-8144-6fa061daf05f"
-APPROVER_EMAIL = "pranjal.khadka@Adex911.onmicrosoft.com"
+load_dotenv() 
+
+CLIENT_ID = os.getenv('CLIENT_ID')
+TENANT_ID = os.getenv('TENANT_ID')
+APPROVER_EMAIL = os.getenv('APPROVER_EMAIL')
 
 API_BASE_URL = "https://wo-flow-prod-10-2023-os3mt.ondigitalocean.app"
 LOGIN_URL = f"{API_BASE_URL}/api/mobile/v3.0/login"
@@ -235,7 +239,7 @@ def create_approval(access_token, approver_id, approver_display_name, ticket, de
         raise Exception(f"Approval request failed for request ID {ticket['id']}: {str(e)}")
 
 def main():
-    
+
     try:
         access_token = get_access_token()
         print("Authenticated successfully with Microsoft Graph.")

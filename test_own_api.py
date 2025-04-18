@@ -1,13 +1,17 @@
 import requests
 import msal
 import webbrowser
+import os
 from datetime import datetime, timedelta, timezone
 from dateutil.parser import parse
 import time
+from dotenv import load_dotenv
 
-CLIENT_ID = "e3da78d9-309d-4ae1-9746-948aa196667f"
-TENANT_ID = "46d6a910-c309-42a3-8144-6fa061daf05f"
-APPROVER_EMAIL = "pranjal.khadka@Adex911.onmicrosoft.com"
+load_dotenv() 
+
+CLIENT_ID = os.getenv('CLIENT_ID')
+TENANT_ID = os.getenv('TENANT_ID')
+APPROVER_EMAIL = os.getenv('APPROVER_EMAIL')
 
 TICKETS_API_URL = "https://ticket-teams.fly.dev/tickets"
 
@@ -194,7 +198,7 @@ def create_approval(access_token, approver_id, approver_display_name, ticket, de
         raise Exception(f"Approval request failed for ticket ID {ticket['id']}: {str(e)}")
 
 def main():
-    
+
     try:
         access_token = get_access_token()
         print("Authenticated successfully.")
